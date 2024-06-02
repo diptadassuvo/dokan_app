@@ -1,4 +1,5 @@
 import 'package:dokan_app/app/app_router.dart';
+import 'package:dokan_app/core/config/theme.dart';
 import 'package:dokan_app/module/auth/presentation/login_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -14,10 +15,7 @@ class App extends StatelessWidget {
           return MaterialApp.router(
             title: 'Flutter Demo',
             debugShowCheckedModeBanner: false,
-            theme: ThemeData(
-              colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-              useMaterial3: true,
-            ),
+            theme: AppTheme.baseTheme,
             routerConfig: appRouter,
           );
         });
