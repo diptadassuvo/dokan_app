@@ -15,8 +15,14 @@ class AppTheme {
         borderRadius: BorderRadius.all(Radius.circular(10.0)),
         borderSide: BorderSide(color: Colors.transparent),
       ),
+      enabledBorder: OutlineInputBorder(
+        borderRadius: BorderRadius.all(Radius.circular(10.0)),
+        borderSide: BorderSide(color: Color(0x1F263238)),
+      ),
       fillColor: Colors.white,
       filled: true,
+      prefixIconColor: Color(0xff7C8592),
+      suffixIconColor: Color(0xff7C8592),
     ),
 
     // button theme
