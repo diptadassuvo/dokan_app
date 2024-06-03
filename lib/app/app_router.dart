@@ -1,4 +1,4 @@
-import 'package:dokan_app/module/auth/presentation/login_view.dart';
+import 'package:dokan_app/module/auth/presentation/login/login_view.dart';
 import 'package:dokan_app/module/auth/presentation/signup_view.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
