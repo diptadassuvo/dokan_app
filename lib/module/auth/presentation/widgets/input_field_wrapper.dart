@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class InputFieldWrapper extends StatelessWidget {
   const InputFieldWrapper({super.key, required this.inputField});
@@ -26,7 +25,6 @@ class InputFieldWrapper extends StatelessWidget {
         ),
       ),
       child: Container(
-        height: 61.h,
         decoration: BoxDecoration(
           // color: Colors.white,
           // borderRadius: BorderRadius.circular(10.r),
