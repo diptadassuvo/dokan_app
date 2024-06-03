@@ -3,7 +3,6 @@ import 'package:dokan_app/core/api/dio_clint.dart';
 import 'package:dokan_app/core/error/failure.dart';
 import 'package:dokan_app/module/auth/data/datasources/auth_remote_datasource.dart';
 import 'package:dokan_app/module/auth/data/models/login_response.dart';
-import 'package:dokan_app/module/auth/data/models/signup_response.dart';
 import 'package:dokan_app/module/auth/domain/usecases/login.dart';
 import 'package:dokan_app/module/auth/domain/usecases/signup.dart';
 
@@ -23,11 +22,13 @@ class AuthRemoteDatasourceImpl implements AuthRemoteDataSource {
   }
 
   @override
-  Future<Either<Failure, SignupResponse>> signup(SignupParam params) async {
+  Future<Either<Failure, bool>> signup(SignupParam params) async {
     final response = await _dioClient.postRequest(
       'https://apptest.dokandemo.com/wp-json/wp/v2/users/register',
       data: params.toJson(),
-      converter: (response) => SignupResponse.fromJson(response),
+      converter: (response) {
+        return true;
+      },
     );
     return response;
   }

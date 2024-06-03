@@ -18,8 +18,8 @@ class AuthRepoImpl implements AuthRepo {
   }
 
   @override
-  Future<bool> signup(SignupParam params) {
-    // TODO: implement signup
-    throw UnimplementedError();
+  Future<Either<Failure, bool>> signup(SignupParam params) async {
+    final response = await _authRemoteDataSource.signup(params);
+    return response.fold((l) => Left(l), (r) => const Right(true));
   }
 }
