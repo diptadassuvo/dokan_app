@@ -8,5 +8,5 @@ import 'package:dokan_app/module/auth/domain/usecases/signup.dart';
 abstract class AuthRepo {
   Future<Either<Failure, LoginUserEntity>> login(LoginParams params);
 
-  Future<bool> signup(SignupParam params);
+  Future<Either<Failure, bool>> signup(SignupParam params);
 }

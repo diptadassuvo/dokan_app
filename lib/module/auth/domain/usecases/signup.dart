@@ -1,3 +1,5 @@
+import 'package:dartz/dartz.dart';
+import 'package:dokan_app/core/error/failure.dart';
 import 'package:dokan_app/module/auth/domain/repos/auth_repo.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
@@ -10,9 +12,8 @@ class SignupUseCase {
 
   const SignupUseCase(this._authRepo);
 
-  Future<bool> call(SignupParam params) {
-    _authRepo.signup(params);
-    return Future.value(true);
+  Future<Either<Failure, bool>> call(SignupParam params) {
+    return _authRepo.signup(params);
   }
 }
 
