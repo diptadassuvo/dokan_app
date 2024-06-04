@@ -15,7 +15,7 @@ class ProductModel with _$ProductModel {
     String? price,
     String? regular_price,
     String? sale_price,
-    DateTime? createdDate,
+    DateTime? date_created,
   }) = _ProductModel;
 
   factory ProductModel.fromJson(Map<String, dynamic> json) =>
