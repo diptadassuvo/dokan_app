@@ -2,29 +2,38 @@ import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-class FilterOption {
+class ProductFilterOption {
   final String label;
   final ValueNotifier<bool> isSelected;
   final String group;
+  final ProductFilterEnums type;
 
-  FilterOption(this.label, this.group) : isSelected = ValueNotifier(false);
+  ProductFilterOption(this.label, this.group, {required this.type})
+      : isSelected = ValueNotifier(false);
 }
+
+enum ProductFilterEnums { newest, oldest, priceLow, priceHigh, bestSales }
 
 class ProductFiler extends HookWidget {
   const ProductFiler({super.key, required this.onConfirm});
 
-  final Function(Map<String, bool>) onConfirm;
+  final Function(List<ProductFilterOption>) onConfirm;
 
   @override
   Widget build(BuildContext context) {
     final filterOptions = useMemoized(() => [
-          FilterOption('Newest', 'date'),
-          FilterOption('Oldest', 'date'),
-          FilterOption('Price Low > High', 'price'),
-          FilterOption('Price High > Low', 'price'),
-          FilterOption('Best Sales', 'sales'),
+          ProductFilterOption('Newest', 'filter',
+              type: ProductFilterEnums.newest),
+          ProductFilterOption('Oldest', 'filter',
+              type: ProductFilterEnums.oldest),
+          ProductFilterOption('Price Low > High', 'filter',
+              type: ProductFilterEnums.priceLow),
+          ProductFilterOption('Price High > Low', 'filter',
+              type: ProductFilterEnums.priceHigh),
+          ProductFilterOption('Best Sales', 'filter',
+              type: ProductFilterEnums.bestSales),
         ]);
-    void handleSelection(FilterOption selectedOption) {
+    void handleSelection(ProductFilterOption selectedOption) {
       for (var option in filterOptions) {
         if (option.group == selectedOption.group && option != selectedOption) {
           option.isSelected.value = false;
@@ -33,7 +42,7 @@ class ProductFiler extends HookWidget {
       selectedOption.isSelected.value = !selectedOption.isSelected.value;
     }
 
-    Widget buildCheckboxOption(FilterOption option) {
+    Widget buildCheckboxOption(ProductFilterOption option) {
       return Wrap(
         spacing: 6,
         crossAxisAlignment: WrapCrossAlignment.center,
@@ -81,11 +90,8 @@ class ProductFiler extends HookWidget {
                 child: FilledButton(
               onPressed: () {
                 // Collect selected values and pass them to the callback
-                final selectedValues = {
-                  for (var option in filterOptions)
-                    option.label: option.isSelected.value,
-                };
-                onConfirm(selectedValues);
+                onConfirm(
+                    filterOptions.where((e) => e.isSelected.value).toList());
                 Navigator.pop(context);
               },
               style: ButtonStyle(

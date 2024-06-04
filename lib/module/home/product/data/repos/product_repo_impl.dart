@@ -24,7 +24,7 @@ class ProductRepoImpl implements ProductsRepo {
               price: product.price,
               regularPrice: product.regular_price,
               salePrice: product.sale_price,
-              createdDate: product.createdDate,
+              createdDate: product.date_created,
             ))
         .toList();
   }

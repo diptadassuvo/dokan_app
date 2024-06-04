@@ -1,4 +1,5 @@
 import 'package:dokan_app/module/home/product/presentation/cubit/products_cubit.dart';
+import 'package:dokan_app/module/home/product/presentation/widgets/product_filter.dart';
 import 'package:dokan_app/module/home/product/presentation/widgets/product_grid_widget.dart';
 import 'package:dokan_app/module/home/product/presentation/widgets/product_list_widget.dart';
 import 'package:flutter/material.dart';
@@ -71,16 +72,52 @@ class ProductsView extends HookWidget {
                   Row(
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
-                      Text(
-                        'Sort by',
-                        style: TextStyle(
-                            fontSize: 15.sp,
-                            fontWeight: FontWeight.w400,
-                            color: const Color(0xff818995)),
-                      ),
-                      const Icon(
-                        Icons.keyboard_arrow_down,
-                        color: Color(0xffB6BED4),
+                      GestureDetector(
+                        onTap: () {
+                          showModalBottomSheet<void>(
+                              context: context,
+                              builder: (BuildContext context) {
+                                return Container(
+                                  width: double.infinity,
+                                  padding: const EdgeInsets.all(20),
+                                  decoration: const BoxDecoration(
+                                    color: Colors.white,
+                                    borderRadius: BorderRadius.only(
+                                      topLeft: Radius.circular(20),
+                                      topRight: Radius.circular(20),
+                                    ),
+                                  ),
+                                  child: Column(
+                                    mainAxisSize: MainAxisSize.min,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      ProductFiler(
+                                          onConfirm: (selectedFilters) {
+                                        context
+                                            .read<ProductsCubit>()
+                                            .filterProducts(selectedFilters);
+                                      })
+                                    ],
+                                  ),
+                                );
+                              });
+                        },
+                        child: Wrap(
+                          children: [
+                            Text(
+                              'Sort by',
+                              style: TextStyle(
+                                  fontSize: 15.sp,
+                                  fontWeight: FontWeight.w400,
+                                  color: const Color(0xff818995)),
+                            ),
+                            const Icon(
+                              Icons.keyboard_arrow_down,
+                              color: Color(0xffB6BED4),
+                            ),
+                          ],
+                        ),
                       ),
                       10.horizontalSpace,
                       GestureDetector(
