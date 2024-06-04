@@ -30,15 +30,21 @@ class ProductListWidget extends StatelessWidget {
         children: [
           SizedBox(
             width: 100.w,
-            child: Image.network(
-              productEntity.images?.first.src ??
-                  'https://psediting.websites.co.in/obaju-turquoise/img/product-placeholder.png',
-              fit: BoxFit.cover,
-              errorBuilder: (context, error, stackTrace) {
-                return const Center(
-                  child: Icon(Icons.error),
-                );
-              },
+            height: double.infinity,
+            child: ClipRRect(
+              borderRadius: BorderRadius.only(
+                  topLeft: Radius.circular(10.r),
+                  bottomLeft: Radius.circular(10.r)),
+              child: Image.network(
+                productEntity.images?.first.src ??
+                    'https://psediting.websites.co.in/obaju-turquoise/img/product-placeholder.png',
+                fit: BoxFit.cover,
+                errorBuilder: (context, error, stackTrace) {
+                  return const Center(
+                    child: Icon(Icons.error),
+                  );
+                },
+              ),
             ),
           ),
           Padding(

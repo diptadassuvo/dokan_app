@@ -30,15 +30,21 @@ class ProductGridWidget extends StatelessWidget {
         children: [
           SizedBox(
             height: 180.h,
-            child: Image.network(
-              productEntity.images?.first.src ??
-                  'https://psediting.websites.co.in/obaju-turquoise/img/product-placeholder.png',
-              fit: BoxFit.cover,
-              errorBuilder: (context, error, stackTrace) {
-                return const Center(
-                  child: Icon(Icons.error),
-                );
-              },
+            child: ClipRRect(
+              borderRadius: BorderRadius.only(
+                topRight: Radius.circular(10.r),
+                topLeft: Radius.circular(10.r),
+              ),
+              child: Image.network(
+                productEntity.images?.first.src ??
+                    'https://psediting.websites.co.in/obaju-turquoise/img/product-placeholder.png',
+                fit: BoxFit.cover,
+                errorBuilder: (context, error, stackTrace) {
+                  return const Center(
+                    child: Icon(Icons.error),
+                  );
+                },
+              ),
             ),
           ),
           Padding(
