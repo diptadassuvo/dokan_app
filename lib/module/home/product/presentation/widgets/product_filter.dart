@@ -52,6 +52,7 @@ class ProductFiler extends HookWidget {
             builder: (context, value, _) {
               return Checkbox(
                 value: value,
+                activeColor: const Color(0xffFF708A),
                 onChanged: (newValue) {
                   handleSelection(option);
                 },
