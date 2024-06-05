@@ -105,7 +105,7 @@ class LoginView extends HookWidget {
                 BlocConsumer<LoginCubit, LoginState>(
                   listener: (context, state) {
                     if (state is LoginSuccess) {
-                      print('success');
+                      context.go('/home');
                     }
                     if (state is LoginFailed) {
                       // show toast
