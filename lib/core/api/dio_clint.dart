@@ -42,7 +42,7 @@ class DioClient with MainBoxMixin {
             'Content-Type': 'application/json',
             'Accept': 'application/json',
             if (_auth != null) ...{
-              'Authorization': _auth,
+              'Authorization': 'Bearer $_auth',
             },
           },
           receiveTimeout: const Duration(minutes: 1),
@@ -60,6 +60,7 @@ class DioClient with MainBoxMixin {
   }) async {
     try {
       final response = await dio.post(url, data: data);
+   
       if ((response.statusCode ?? 0) < 200 ||
           (response.statusCode ?? 0) > 201) {
         throw DioException(
@@ -71,7 +72,7 @@ class DioClient with MainBoxMixin {
     } on DioException catch (e, stackTrace) {
       return Left(
         ServerFailure(
-          e.response?.data['error'] as String? ?? e.message,
+          e.response?.data['message'] as String? ?? e.message,
         ),
       );
     }
