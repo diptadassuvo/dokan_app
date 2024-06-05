@@ -30,8 +30,28 @@ class ProfileView extends HookWidget {
         actions: [
           IconButton(
               onPressed: () {
-                MainBoxMixin().removeData(MainBoxKeys.token);
-                context.go('/login');
+                // show dialog
+                showDialog(
+                    context: context,
+                    builder: (context) {
+                      return AlertDialog(
+                        title: const Text('Logout'),
+                        content: const Text('Are you sure you want to logout?'),
+                        actions: [
+                          OutlinedButton(
+                              onPressed: () {
+                                GoRouter.of(context).pop();
+                              },
+                              child: const Text('Cancel')),
+                          FilledButton(
+                              onPressed: () {
+                                MainBoxMixin().removeData(MainBoxKeys.token);
+                                context.go('/login');
+                              },
+                              child: const Text('Logout')),
+                        ],
+                      );
+                    });
               },
               icon: const Icon(Icons.logout_outlined))
         ],
