@@ -20,13 +20,14 @@ update their first and last names in the profile sectio
 ## Screenshots
 
 Include screenshots of your app to give users a visual idea of what it looks like.
-
-<img src="screenshots/native_splash_screen.png" alt="Example Image" width="150" height="300" />
-<img src="screenshots/sigin_screen.png" alt="Example Image" width="150" height="300" />
-<img src="screenshots/signUp_screen.png" alt="Example Image" width="150" height="300" />
-<img src="screenshots/product_view_01.png" alt="Example Image" width="150" height="300" />
-<img src="screenshots/product_view_02.png" alt="Example Image" width="150" height="300" />
-<img src="screenshots/profile_screen.png" alt="Example Image" width="150" height="300" />
+<div  style="display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 10px;">
+<img src="screenshots/native_splash_screen.png" alt="Example Image" width="200" height="400" />
+<img src="screenshots/sigin_screen.png" alt="Example Image" width="200" height="400" />
+<img src="screenshots/signUp_screen.png" alt="Example Image" width="200" height="400" />
+<img src="screenshots/product_view_01.png" alt="Example Image" width="200" height="400" />
+<img src="screenshots/product_view_02.png" alt="Example Image" width="200" height="400" />
+<img src="screenshots/profile_screen.png" alt="Example Image" width="200" height="400" />
+</div>
 
 ## Installation
 
