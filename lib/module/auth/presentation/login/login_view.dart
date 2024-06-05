@@ -4,7 +4,10 @@ import 'package:dokan_app/module/auth/presentation/widgets/social_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
+
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_widget_from_html/flutter_widget_from_html.dart';
+
 import 'package:go_router/go_router.dart';
 
 class LoginView extends HookWidget {
@@ -108,9 +111,13 @@ class LoginView extends HookWidget {
                       context.go('/home');
                     }
                     if (state is LoginFailed) {
-                      // show toast
+                      //showtoast
                       ScaffoldMessenger.of(context).showSnackBar(
-                        SnackBar(content: Text(state.error)),
+                        SnackBar(
+                          content: HtmlWidget(
+                            state.error,
+                          ),
+                        ),
                       );
                     }
                   },
