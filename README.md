@@ -26,6 +26,8 @@ Include screenshots of your app to give users a visual idea of what it looks lik
 <img src="screenshots/signUp_screen.png" alt="Example Image" width="200" height="400" />
 <img src="screenshots/product_view_01.png" alt="Example Image" width="200" height="400" />
 <img src="screenshots/product_view_02.png" alt="Example Image" width="200" height="400" />
+<img src="screenshots/product_view_03.png" alt="Example Image" width="200" height="400" />
+<img src="screenshots/product_details.png" alt="Example Image" width="200" height="400" />
 <img src="screenshots/profile_screen.png" alt="Example Image" width="200" height="400" />
 </div>
 
@@ -40,6 +42,10 @@ flutter pub get
 flutter pub run build_runner build --delete-conflicting-outputs 
 flutter run --dart-define-from-file=config.json
 ```
+
+⚠️ <strong>Reminder:</strong>
+Remember to create a <code>config.json</code> file and rename the <code>BASE_URL</code> value.
+You can find an example file named <code>config.json.example</code>.
 
 ## Usage
 
