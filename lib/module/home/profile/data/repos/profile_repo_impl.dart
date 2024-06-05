@@ -3,6 +3,7 @@ import 'package:dokan_app/core/error/failure.dart';
 import 'package:dokan_app/module/home/profile/data/dataSources/profile_remote_datasource.dart';
 import 'package:dokan_app/module/home/profile/domain/entities/profile_user_entity.dart';
 import 'package:dokan_app/module/home/profile/domain/repos/profile_repo.dart';
+import 'package:dokan_app/module/home/profile/domain/usecases/update_profile.dart';
 
 class ProfileRepoImpl implements ProfileRepo {
   final ProfileRemoteDatasource _profileRemoteDatasource;
@@ -24,8 +25,17 @@ class ProfileRepoImpl implements ProfileRepo {
   }
 
   @override
-  Future<ProfileUserEntity> updateProfile(ProfileUserEntity profileUserEntity) {
-    // TODO: implement updateProfile
-    throw UnimplementedError();
+  Future<Either<Failure, ProfileUserEntity>> updateProfile(
+      UpdateProfileParams params) async {
+    final response = await _profileRemoteDatasource.updateProfile(params);
+    return response.fold((l) => Left(l), (data) {
+      // convert to entity
+      return Right(ProfileUserEntity(
+        userName: data.userName,
+        firstName: data.firstName,
+        lastName: data.lastName,
+        emailAddress: data.emailAddress,
+      ));
+    });
   }
 }
