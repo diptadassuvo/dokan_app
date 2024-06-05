@@ -21,12 +21,12 @@ update their first and last names in the profile sectio
 
 Include screenshots of your app to give users a visual idea of what it looks like.
 
-![Splash Screen](native_splash_screen.png)
-![Signin Screen](screenshots/sigin_screen.png)
-![Signup Screen](screenshots/signUp_screen.png)
-![Product Grid View Screen](screenshots/product_view_01.png)
-![Product List View Screen](screenshots/product_view_02.png)
-![Profile Screen](screenshots/profile_screen.png)
+<img src="screenshots/native_splash_screen.png" alt="Example Image" width="150" height="300" />
+<img src="screenshots/sigin_screen.png" alt="Example Image" width="150" height="300" />
+<img src="screenshots/signUp_screen.png" alt="Example Image" width="150" height="300" />
+<img src="screenshots/product_view_01.png" alt="Example Image" width="150" height="300" />
+<img src="screenshots/product_view_02.png" alt="Example Image" width="150" height="300" />
+<img src="screenshots/profile_screen.png" alt="Example Image" width="150" height="300" />
 
 ## Installation
 
