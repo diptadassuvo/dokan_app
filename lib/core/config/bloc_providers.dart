@@ -12,6 +12,7 @@ import 'package:dokan_app/module/home/product/presentation/cubit/products_cubit.
 import 'package:dokan_app/module/home/profile/data/dataSources/profile_remote_datasource_impl.dart';
 import 'package:dokan_app/module/home/profile/data/repos/profile_repo_impl.dart';
 import 'package:dokan_app/module/home/profile/domain/usecases/load_profile.dart';
+import 'package:dokan_app/module/home/profile/domain/usecases/update_profile.dart';
 import 'package:dokan_app/module/home/profile/presentation/cubit/profile_cubit.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:injectable/injectable.dart';
@@ -60,6 +61,13 @@ class BlocProviders {
     BlocProvider<ProfileCubit>(
       create: (context) => ProfileCubit(
         LoadProfileUseCase(
+          ProfileRepoImpl(
+            ProfileRemoteDatasourceImpl(
+              DioClient(),
+            ),
+          ),
+        ),
+        UpdateProfileUseCase(
           ProfileRepoImpl(
             ProfileRemoteDatasourceImpl(
               DioClient(),
