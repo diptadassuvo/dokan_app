@@ -50,6 +50,8 @@ dependencies:
   # use for native splash builder
   flutter_native_splash: ^2.4.0
 
+  intl: ^0.19.0
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
