@@ -1,10 +1,13 @@
-# My Flutter App
+# Dokan App Demo
 
-[![Build Status](https://img.shields.io/github/workflow/status/username/repository/CI)](https://github.com/username/repository/actions)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Version](https://img.shields.io/badge/version-1.0.0-blue.svg)](https://github.com/username/repository/releases)
 
-A brief description of what your app does and why it is useful.
+This Flutter app offers a straightforward user experience with basic authentication features
+utilizing WordPress REST APIs. Users can create an account by providing their username, email, and
+password. Once registered, they can log in using their username and password.
+After logging in, users have access to a collection of local JSON products. Additionally, users can
+update their first and last names in the profile sectio
 
 ## Table of Contents
 
@@ -12,22 +15,42 @@ A brief description of what your app does and why it is useful.
 - [Installation](#installation)
 - [Usage](#usage)
 - [Features](#features)
-- [Contributing](#contributing)
-- [License](#license)
 - [Contact](#contact)
 
 ## Screenshots
 
 Include screenshots of your app to give users a visual idea of what it looks like.
 
-![Home Screen](screenshots/home.png)
-![Detail Screen](screenshots/detail.png)
+![Splash Screen](native_splash_screen.png)
+![Signin Screen](screenshots/sigin_screen.png)
+![Signup Screen](screenshots/signUp_screen.png)
+![Product Grid View Screen](screenshots/product_view_01.png)
+![Product List View Screen](screenshots/product_view_02.png)
+![Profile Screen](screenshots/profile_screen.png)
 
 ## Installation
 
 Instructions on how to install and set up your project.
 
 ```bash
-git clone https://github.com/username/repository.git
+git clone https://github.com/diptadassuvo/dokan_app.git
 cd repository
 flutter pub get
+flutter pub run build_runner build --delete-conflicting-outputs 
+flutter run --dart-define-from-file=config.json
+```
+
+## Usage
+
+Made as a practice also as a task project.
+
+## Features
+
+- Create account
+- Login
+- Load load json file
+- Update profile (first name & Last name)
+
+## Contact
+
+[![email](https://img.icons8.com/color/48/000000/gmail.png)](mailto:diptadassuvo@gmail.com)
