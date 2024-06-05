@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:dokan_app/core/config/getit.dart';
+import 'package:dokan_app/utils/services/hive/main_box.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
@@ -17,6 +18,11 @@ Future<void> bootstrap(
 
   // inject dependencies
   configureDependencies();
+
+  await MainBoxMixin.initHive('dokan_app');
+  //
+  // // app state
+  // print(MainBoxMixin.mainBox?.get(MainBoxKeys.token.toString()));
 
   runApp(await builder());
 }
