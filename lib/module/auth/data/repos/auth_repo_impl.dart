@@ -5,8 +5,9 @@ import 'package:dokan_app/module/auth/domain/entities/login_user_entity.dart';
 import 'package:dokan_app/module/auth/domain/repos/auth_repo.dart';
 import 'package:dokan_app/module/auth/domain/usecases/login.dart';
 import 'package:dokan_app/module/auth/domain/usecases/signup.dart';
+import 'package:dokan_app/utils/services/hive/main_box.dart';
 
-class AuthRepoImpl implements AuthRepo {
+class AuthRepoImpl with MainBoxMixin implements AuthRepo {
   final AuthRemoteDataSource _authRemoteDataSource;
 
   const AuthRepoImpl(this._authRemoteDataSource);
@@ -14,7 +15,10 @@ class AuthRepoImpl implements AuthRepo {
   @override
   Future<Either<Failure, LoginUserEntity>> login(LoginParams params) async {
     final response = await _authRemoteDataSource.login(params);
-    return response.fold((l) => Left(l), (model) => Right(model.toEntity()));
+    return response.fold((l) => Left(l), (model) {
+      addData(MainBoxKeys.token, model.token);
+      return Right(model.toEntity());
+    });
   }
 
   @override
