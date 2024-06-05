@@ -1,4 +1,5 @@
 import 'package:animated_bottom_navigation_bar/animated_bottom_navigation_bar.dart';
+import 'package:dokan_app/module/home/cart/presentation/cart_view.dart';
 import 'package:dokan_app/module/home/product/presentation/products_view.dart';
 import 'package:dokan_app/module/home/profile/presentation/profile_view.dart';
 import 'package:flutter/cupertino.dart';
@@ -15,8 +16,8 @@ class HomeView extends HookWidget {
     final homeIndex = useState(0);
     final homePages = [
       const ProductsView(),
-      const Center(child: Text('page 2')),
-      const Center(child: Text('Cart Page')),
+      const CartView(),
+      const CartView(),
       const ProfileView(),
     ];
     return Scaffold(
