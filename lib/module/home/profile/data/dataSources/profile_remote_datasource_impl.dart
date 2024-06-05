@@ -14,7 +14,7 @@ class ProfileRemoteDatasourceImpl implements ProfileRemoteDatasource {
   Future<Either<Failure, UserProfileModel>> loadProfile() async {
     // calling POST API cause get call give us less data!
     final response = await _dioClient.postRequest(
-      'https://apptest.dokandemo.com/wp-json/wp/v2/users/me',
+      '/wp/v2/users/me',
       converter: (response) => UserProfileModel.fromJson(response),
     );
 
@@ -25,7 +25,7 @@ class ProfileRemoteDatasourceImpl implements ProfileRemoteDatasource {
   Future<Either<Failure, UserProfileModel>> updateProfile(
       UpdateProfileParams params) async {
     final response = await _dioClient.postRequest(
-      'https://apptest.dokandemo.com/wp-json/wp/v2/users/me',
+      '/wp/v2/users/me',
       data: params.toJson(),
       converter: (response) => UserProfileModel.fromJson(response),
     );

@@ -1,16 +1,33 @@
-# dokan_app
+# My Flutter App
 
-A new Flutter project.
+[![Build Status](https://img.shields.io/github/workflow/status/username/repository/CI)](https://github.com/username/repository/actions)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![Version](https://img.shields.io/badge/version-1.0.0-blue.svg)](https://github.com/username/repository/releases)
 
-## Getting Started
+A brief description of what your app does and why it is useful.
 
-This project is a starting point for a Flutter application.
+## Table of Contents
 
-A few resources to get you started if this is your first Flutter project:
+- [Screenshots](#screenshots)
+- [Installation](#installation)
+- [Usage](#usage)
+- [Features](#features)
+- [Contributing](#contributing)
+- [License](#license)
+- [Contact](#contact)
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+## Screenshots
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+Include screenshots of your app to give users a visual idea of what it looks like.
+
+![Home Screen](screenshots/home.png)
+![Detail Screen](screenshots/detail.png)
+
+## Installation
+
+Instructions on how to install and set up your project.
+
+```bash
+git clone https://github.com/username/repository.git
+cd repository
+flutter pub get

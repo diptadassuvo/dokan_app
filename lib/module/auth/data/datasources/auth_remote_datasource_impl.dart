@@ -14,7 +14,7 @@ class AuthRemoteDatasourceImpl implements AuthRemoteDataSource {
   @override
   Future<Either<Failure, LoginResponse>> login(LoginParams params) async {
     final response = await _dioClient.postRequest(
-      'https://apptest.dokandemo.com/wp-json/jwt-auth/v1/token',
+      '/jwt-auth/v1/token',
       data: params.toJson(),
       converter: (response) => LoginResponse.fromJson(response),
     );
@@ -25,7 +25,7 @@ class AuthRemoteDatasourceImpl implements AuthRemoteDataSource {
   @override
   Future<Either<Failure, bool>> signup(SignupParam params) async {
     final response = await _dioClient.postRequest(
-      'https://apptest.dokandemo.com/wp-json/wp/v2/users/register',
+      '/wp/v2/users/register',
       data: params.toJson(),
       converter: (response) {
         return true;
