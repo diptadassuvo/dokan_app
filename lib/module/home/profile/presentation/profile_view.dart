@@ -1,3 +1,4 @@
+import 'package:dokan_app/module/home/profile/domain/usecases/update_profile.dart';
 import 'package:dokan_app/module/home/profile/presentation/cubit/profile_cubit.dart';
 import 'package:dokan_app/utils/services/hive/main_box.dart';
 import 'package:flutter/cupertino.dart';
@@ -13,6 +14,8 @@ class ProfileView extends HookWidget {
   @override
   Widget build(BuildContext context) {
     final isAccountExpanded = useState(false);
+    final firstNameController = useTextEditingController();
+    final lastNameController = useTextEditingController();
     return Scaffold(
       appBar: AppBar(
         backgroundColor: const Color(0xffF8F8F8),
@@ -33,20 +36,23 @@ class ProfileView extends HookWidget {
               icon: const Icon(Icons.logout_outlined))
         ],
       ),
-      body: SingleChildScrollView(
-        child: BlocConsumer<ProfileCubit, ProfileState>(
-          listener: (context, state) {
-            if (state is ProfileError) {
-              ScaffoldMessenger.of(context)
-                  .showSnackBar(SnackBar(content: Text(state.message!)));
-            }
-          },
-          builder: (context, state) {
-            if (state is ProfileInitial || state is ProfileLoading) {
-              return const Center(child: CircularProgressIndicator());
-            }
-            if (state is ProfileLoaded) {
-              return Column(
+      body: BlocConsumer<ProfileCubit, ProfileState>(
+        listener: (context, state) {
+          if (state is ProfileError) {
+            ScaffoldMessenger.of(context)
+                .showSnackBar(SnackBar(content: Text(state.message!)));
+          }
+        },
+        builder: (context, state) {
+          if (state is ProfileInitial || state is ProfileLoading) {
+            return const Center(child: CircularProgressIndicator());
+          }
+          if (state is ProfileLoaded) {
+            // init text controllers values
+            firstNameController.text = state.profileUserEntity.firstName ?? '';
+            lastNameController.text = state.profileUserEntity.lastName ?? '';
+            return SingleChildScrollView(
+              child: Column(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   50.verticalSpace,
@@ -137,8 +143,7 @@ class ProfileView extends HookWidget {
                                   ),
                                   20.verticalSpace,
                                   TextFormField(
-                                    initialValue:
-                                        state.profileUserEntity.firstName,
+                                    controller: firstNameController,
                                     decoration: const InputDecoration(
                                       labelText: 'First Name',
                                       border: InputBorder.none,
@@ -146,8 +151,7 @@ class ProfileView extends HookWidget {
                                   ),
                                   20.verticalSpace,
                                   TextFormField(
-                                    initialValue:
-                                        state.profileUserEntity.lastName,
+                                    controller: lastNameController,
                                     decoration: const InputDecoration(
                                       labelText: 'Last Name',
                                       border: InputBorder.none,
@@ -166,7 +170,21 @@ class ProfileView extends HookWidget {
                                       20.horizontalSpace,
                                       Expanded(
                                           child: FilledButton(
-                                        onPressed: () {},
+                                        onPressed: () {
+                                          context
+                                              .read<ProfileCubit>()
+                                              .updateProfile(
+                                                UpdateProfileParams(
+                                                  first_name:
+                                                      firstNameController.text
+                                                          .trim(),
+                                                  last_name: lastNameController
+                                                      .text
+                                                      .trim(),
+                                                ),
+                                              );
+                                          isAccountExpanded.value = false;
+                                        },
                                         style: ButtonStyle(
                                           backgroundColor:
                                               WidgetStateProperty.all(
@@ -235,11 +253,11 @@ class ProfileView extends HookWidget {
                   ),
                   40.verticalSpace,
                 ],
-              );
-            }
-            return const SizedBox();
-          },
-        ),
+              ),
+            );
+          }
+          return const SizedBox();
+        },
       ),
     );
   }
