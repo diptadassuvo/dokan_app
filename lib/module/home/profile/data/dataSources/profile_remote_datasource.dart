@@ -6,5 +6,6 @@ import 'package:dokan_app/module/home/profile/domain/usecases/update_profile.dar
 abstract class ProfileRemoteDatasource {
   Future<Either<Failure, UserProfileModel>> loadProfile();
 
-  Future<void> updateProfile(UpdateProfileParams profileUserEntity);
+  Future<Either<Failure, UserProfileModel>> updateProfile(
+      UpdateProfileParams params);
 }

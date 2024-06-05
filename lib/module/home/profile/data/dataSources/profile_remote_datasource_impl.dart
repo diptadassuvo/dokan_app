@@ -22,8 +22,14 @@ class ProfileRemoteDatasourceImpl implements ProfileRemoteDatasource {
   }
 
   @override
-  Future<void> updateProfile(UpdateProfileParams profileUserEntity) {
-    // TODO: implement updateProfile
-    throw UnimplementedError();
+  Future<Either<Failure, UserProfileModel>> updateProfile(
+      UpdateProfileParams params) async {
+    final response = await _dioClient.postRequest(
+      'https://apptest.dokandemo.com/wp-json/wp/v2/users/me',
+      data: params.toJson(),
+      converter: (response) => UserProfileModel.fromJson(response),
+    );
+
+    return response;
   }
 }
