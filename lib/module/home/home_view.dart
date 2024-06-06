@@ -1,9 +1,11 @@
 import 'package:animated_bottom_navigation_bar/animated_bottom_navigation_bar.dart';
 import 'package:dokan_app/module/home/cart/presentation/cart_view.dart';
 import 'package:dokan_app/module/home/product/presentation/products_view.dart';
+import 'package:dokan_app/module/home/profile/presentation/cubit/profile_cubit.dart';
 import 'package:dokan_app/module/home/profile/presentation/profile_view.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -20,6 +22,10 @@ class HomeView extends HookWidget {
       const CartView(),
       const ProfileView(),
     ];
+    useEffect(() {
+      context.read<ProfileCubit>().loadProfile();
+      return null;
+    }, []);
     return Scaffold(
       body: homePages.elementAt(homeIndex.value),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,

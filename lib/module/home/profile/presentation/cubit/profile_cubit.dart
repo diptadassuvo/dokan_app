@@ -10,9 +10,7 @@ part 'profile_state.dart';
 
 class ProfileCubit extends Cubit<ProfileState> {
   ProfileCubit(this._loadProfileUseCase, this._updateProfileUseCase)
-      : super(ProfileInitial()) {
-    loadProfile();
-  }
+      : super(ProfileInitial());
 
   final LoadProfileUseCase _loadProfileUseCase;
 
@@ -34,9 +32,5 @@ class ProfileCubit extends Cubit<ProfileState> {
         (error) => emit(ProfileError(
             error is ServerFailure ? error.message ?? 'error' : '')),
         (data) => emit(ProfileLoaded(data)));
-  }
-
-  Future<void> initState() async {
-    emit(ProfileInitial());
   }
 }

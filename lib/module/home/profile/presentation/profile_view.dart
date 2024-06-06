@@ -49,7 +49,6 @@ class ProfileView extends HookWidget {
                               onPressed: () {
                                 MainBoxMixin().removeData(MainBoxKeys.token);
                                 context.go('/login');
-                                context.read<ProfileCubit>().initState();
                               },
                               child: const Text('Logout')),
                         ],
