@@ -1,6 +1,7 @@
 import 'package:dokan_app/core/constants/assets_path.dart';
 import 'package:dokan_app/module/auth/presentation/login/cubit/login_cubit.dart';
 import 'package:dokan_app/module/auth/presentation/widgets/social_auth.dart';
+import 'package:dokan_app/module/home/profile/presentation/cubit/profile_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';

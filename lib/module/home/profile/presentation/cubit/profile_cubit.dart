@@ -35,4 +35,8 @@ class ProfileCubit extends Cubit<ProfileState> {
             error is ServerFailure ? error.message ?? 'error' : '')),
         (data) => emit(ProfileLoaded(data)));
   }
+
+  Future<void> initState() async {
+    emit(ProfileInitial());
+  }
 }

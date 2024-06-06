@@ -17,6 +17,7 @@ class ProfileView extends HookWidget {
     final isAccountExpanded = useState(false);
     final firstNameController = useTextEditingController();
     final lastNameController = useTextEditingController();
+
     return Scaffold(
       appBar: AppBar(
         backgroundColor: const Color(0xffF8F8F8),
@@ -48,6 +49,7 @@ class ProfileView extends HookWidget {
                               onPressed: () {
                                 MainBoxMixin().removeData(MainBoxKeys.token);
                                 context.go('/login');
+                                context.read<ProfileCubit>().initState();
                               },
                               child: const Text('Logout')),
                         ],
